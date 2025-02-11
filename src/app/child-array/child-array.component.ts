@@ -9,6 +9,8 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ChildArrayComponent implements OnInit {
 
   dispatchForm: FormGroup;
+  submitted: boolean = false;
+
   constructor(
     private fb: FormBuilder
   ) { }
@@ -47,5 +49,18 @@ export class ChildArrayComponent implements OnInit {
 
   removeProduct(index: number) {
     this.product.removeAt(index);
+  }
+
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.dispatchForm.invalid) {
+      return;
+    }
+  }
+
+  resetForm() {
+    this.submitted = false;
+    this.dispatchForm.reset();
   }
 }
