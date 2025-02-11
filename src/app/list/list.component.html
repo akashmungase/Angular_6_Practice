@@ -1,0 +1,23 @@
+<p>
+  list works!
+</p>
+<div class="alert alert-primary" role="alert">
+  This is a primary alert—check it out!
+</div>
+{{FirstName | uppercase }}
+<table>
+  <tbody>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let item of toDosList; let i = index; let first = first; let last = last">
+      <td *ngIf="first">{{ i + 1 }}</td>
+      <td>{{ item.id }}</td>
+      <td>{{ item.title | uppercase}}</td>
+    </tr>
+  </tbody>
+</table>

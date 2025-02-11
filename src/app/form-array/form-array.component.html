@@ -1,0 +1,60 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="dispatchForm" (ngSubmit)="onSubmit()" autocomplete="off">
+      <table class="table table-striped table-bordered table-hover table-sm">
+        <thead>
+          <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">Product Name</th>
+            <th class="text-center">Quantity</th>
+            <th class="text-center">Price</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody formArrayName="productList">
+          <tr *ngFor="let item of product.controls; let i = index; let first = first; let last = last"
+            [formGroupName]="i">
+            <td>
+              <input type="text" formControlName="dispatch_id" class="form-control" />
+              <div *ngIf="item.get('dispatch_id').invalid && submitted" class="alert alert-danger">
+                ID is required
+              </div>
+            </td>
+            <td>
+              <input type="text" formControlName="product_name" class="form-control" />
+              <div *ngIf="item.get('product_name').invalid && submitted" class="alert alert-danger">
+                Product Name is required
+              </div>
+            </td>
+            <td>
+              <input type="text" formControlName="quantity" class="form-control"
+                (keypress)="commonService.onlyDecimalNumber($event)" />
+              <div *ngIf="item.get('quantity').invalid && submitted" class="alert alert-danger">
+                Quantity must be at least 1
+              </div>
+            </td>
+            <td>
+              <input type="text" formControlName="price" class="form-control"
+                (keypress)="commonService.onlyDecimalNumber($event)" />
+              <div *ngIf="item.get('price').invalid && submitted" class="alert alert-danger">
+                Price must be at least 0
+              </div>
+            </td>
+            <td>
+              <button *ngIf="last" type="button" (click)="addProduct()" class="btn btn-success mr-2">
+                <i class="fas fa-plus"></i>
+              </button>
+              <button *ngIf="!first || !last" type="button" (click)="removeProduct(i)" class="btn btn-danger">
+                <i class="fas fa-minus"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center">
+        <button type="button" (click)="resetForm()" class="btn btn-secondary mr-2">Reset</button>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

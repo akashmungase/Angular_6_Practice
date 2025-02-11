@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app  # Mount the current directory to /app in the container
+    ports:
+      - "4202:4202"  # Map the container's port 4202 to the host's port 4202

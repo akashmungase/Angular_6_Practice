@@ -1,1 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+body {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.light-mode {
+    background-color: white;
+    color: black;
+}
+
+body.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+.alert {
+    padding: 0.55rem 0.5rem !important;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #007bff;
+}
+.toast {
+    background-color: #007bff; /* Default background color (blue for info) */
+    color: white; /* Ensures text is white */
+}
+
+.toast-success {
+    background-color: #28a745 !important; /* Green for success */
+    color: white !important;
+}
+
+.toast-error {
+    background-color: #dc3545 !important; /* Red for error */
+    color: white !important;
+}
+
+.toast-info {
+    background-color: #17a2b8 !important; /* Cyan for info */
+    color: white !important;
+}
+
+.toast-warning {
+    background-color: #ffc107 !important; /* Yellow for warning */
+    color: black !important;
+}
+
+.toast-title {
+    font-weight: bold; /* Make title bold */
+}

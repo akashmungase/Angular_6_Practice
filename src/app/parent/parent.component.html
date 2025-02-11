@@ -1,0 +1,5 @@
+<p>
+  parent works!
+</p>
+<h1>{{childData}}</h1>
+<app-child [fromParent]="parentData" (fromChild)="getData($event)"></app-child>
